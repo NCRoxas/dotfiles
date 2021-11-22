@@ -1,0 +1,61 @@
+## Import files (Colors, Fonts, Etc)
+import:
+  - ~/.config/alacritty/colors.yml
+  - ~/.config/alacritty/fonts.yml
+
+shell:
+  program: /usr/bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
+## Set environment variables
+env:
+  TERM: xterm-256color
+
+## Terminal window settings
+window:
+  dimensions:
+    columns: 210
+    lines: 45
+
+  padding:
+    x: 5
+    y: 5
+
+  position:
+    x: 350
+    y: 0
+
+  decorations: none
+  startup_mode: Windowed
+  dynamic_title: true
+
+## scrolling
+  history: 10000
+  multiplier: 3
+
+## Background opacity
+background_opacity: 0.9
+
+## Cursor
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
+  unfocused_hollow: true
+
+selection:
+  save_to_clipboard: true
+
+## Bindings
+key_bindings:
+- { key: Z, mods: Alt, action: Hide }
+
+mouse_bindings:
+- { mouse: Right, action: Paste }
+
+## Live config reload
+live_config_reload: true
