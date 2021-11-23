@@ -61,4 +61,5 @@ function ops(){
 	zip -r -P "$PASS" "${1%.*}.zip" "$1"
 	echo "Uploading ${1%.*}.zip..."
 	curl -F file=@"${1%.*}.zip" https://x0.at/
+	rm ${1%.*}.zip
 }
