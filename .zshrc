@@ -16,6 +16,9 @@ export ZSH="/home/roxas/.oh-my-zsh"
 export VISUAL="/usr/bin/micro"
 export HISTIGNORE="*sudo -S*"
 
+# Fuck node
+#export NODE_OPTIONS="--openssl-legacy-provider"
+
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_UPDATE_PROMPT="true"
@@ -23,7 +26,7 @@ UPDATE_ZSH_DAYS=3
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Plugins
-plugins=(git sudo autojump zsh-autosuggestions dirhistory)
+plugins=(git sudo autojump zsh-autosuggestions dirhistory dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
