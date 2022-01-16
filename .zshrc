@@ -16,38 +16,24 @@ export ZSH="/home/roxas/.oh-my-zsh"
 export VISUAL="/usr/bin/micro"
 export HISTIGNORE="*sudo -S*"
 
-# Fuck node
-#export NODE_OPTIONS="--openssl-legacy-provider"
+# Load plugins
+source <(antibody init)
+antibody bundle < ~/.zsh_plugins.txt
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-DISABLE_UPDATE_PROMPT="true"
-UPDATE_ZSH_DAYS=3
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Plugins
-plugins=(git sudo autojump zsh-autosuggestions dirhistory dotenv)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Custom Bindings
+bindkey '^[[1;3D' backward-word
+bindkey '^[[1;3C' forward-word
 
 # Aliases
 alias zshconfig="micro ~/.zshrc"
 alias py="python3"
 alias pip="pip3"
 alias nano="micro"
-alias yt="yt-dlp --sponsorblock-remove default"
-alias ytx="yt-dlp -x --sponsorblock-remove intro,outro -o '%(uploader)s/%(playlist_index)s - %(title)s.%(ext)s'"
+alias epoch='date +%s'
 alias reload="source ~/.zshrc"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
+alias yt="yt-dlp --sponsorblock-remove default"
+alias ytx="yt-dlp -x --sponsorblock-remove intro,outro -o '%(uploader)s/%(playlist_index)s - %(title)s.%(ext)s'"
 alias config="/usr/bin/git --git-dir=/home/roxas/.cfg/ --work-tree=/home/roxas"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -65,4 +51,28 @@ function ops(){
 	echo "Uploading ${1%.*}.zip..."
 	curl -F file=@"${1%.*}.zip" https://x0.at/
 	rm "${1%.*}.zip"
+}
+
+ # colorized alias list
+function alias-list {
+  alias | sort \
+  | sed -E -e "s|^([^=]*)=(.*)|${fg_bold[blue]}\1###${fg[white]}\2${reset_color}|" \
+  | column -s '###' -t 
+}
+
+# generate random characters
+function random {
+  local character_count=${1:-32}
+  local character_set=${2:-'A-Za-z0-9!#$%&()*+,-./:;<=>?@[]^_`{|}~'}
+  head /dev/urandom | LC_ALL=C tr -dc $character_set | fold -w $character_count | head -1
+}
+
+# colorized diff
+function diff {
+  command diff "$@" | sed \
+    -e "s|^\(<.*\)|${fg[red]}\1$reset_color|" \
+    -e "s|^\(>.*\)|${fg[green]}\1$reset_color|" \
+    -e "s|^\([a-z0-9].*\)|${fg_bold[cyan]}\1$reset_color|" \
+    -l
+  return ${pipestatus[1]}
 }
