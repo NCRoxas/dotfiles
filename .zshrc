@@ -44,8 +44,8 @@ alias zshconfig="micro ~/.zshrc"
 alias py="python3"
 alias pip="pip3"
 alias nano="micro"
-alias yt="yt-dlp"
-alias ytx="yt-dlp -x"
+alias yt="yt-dlp --sponsorblock-remove default"
+alias ytx="yt-dlp -x --sponsorblock-remove intro,outro -o '%(uploader)s/%(playlist_index)s - %(title)s.%(ext)s'"
 alias reload="source ~/.zshrc"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
 alias config="/usr/bin/git --git-dir=/home/roxas/.cfg/ --work-tree=/home/roxas"
@@ -64,5 +64,5 @@ function ops(){
 	zip -r -P "$PASS" "${1%.*}.zip" "$1"
 	echo "Uploading ${1%.*}.zip..."
 	curl -F file=@"${1%.*}.zip" https://x0.at/
-	rm ${1%.*}.zip
+	rm "${1%.*}.zip"
 }
