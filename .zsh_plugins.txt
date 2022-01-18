@@ -1,9 +1,10 @@
 # Plugins
-ohmyzsh/ohmyzsh path:plugins/sudo
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-djui/alias-tips
 agkozak/zsh-z
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+ohmyzsh/ohmyzsh path:plugins/sudo
 
 # Theme
 romkatv/powerlevel10k

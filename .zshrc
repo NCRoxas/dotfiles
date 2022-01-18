@@ -13,7 +13,15 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export PF_INFO="ascii title os de host kernel uptime pkgs shell memory wm palette"
 export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
 export VISUAL="/usr/bin/micro"
+export HISTFILE="$HOME/.zsh_history"
 export HISTIGNORE="*sudo -S*"
+export SAVEHIST=10000
+
+# Zsh options
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt HIST_NO_STORE
+setopt HIST_SAVE_NO_DUPS
 
 # Load plugins
 source <(antibody init)
@@ -22,6 +30,8 @@ antibody bundle < ~/.zsh_plugins.txt
 # Custom Bindings
 bindkey '^[[1;3D' backward-word
 bindkey '^[[1;3C' forward-word
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Aliases
 alias zshconfig="micro ~/.zshrc"
