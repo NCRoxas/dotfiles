@@ -63,7 +63,7 @@ function ops(){
 }
 
  # colorized alias list
-function alias-list {
+function als {
   alias | sort \
   | sed -E -e "s|^([^=]*)=(.*)|${fg_bold[blue]}\1###${fg[white]}\2${reset_color}|" \
   | column -s '###' -t 
