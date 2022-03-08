@@ -85,3 +85,5 @@ function diff {
     -l
   return ${pipestatus[1]}
 }
+
+export PATH="$HOME/.poetry/bin:$PATH"
