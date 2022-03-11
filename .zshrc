@@ -30,8 +30,6 @@ antibody bundle < ~/.zsh_plugins.txt
 # Custom Bindings
 bindkey '^[[1;3D' backward-word
 bindkey '^[[1;3C' forward-word
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # Aliases
 alias zshconfig="micro ~/.zshrc"
@@ -85,5 +83,3 @@ function diff {
     -l
   return ${pipestatus[1]}
 }
-
-export PATH="$HOME/.poetry/bin:$PATH"
