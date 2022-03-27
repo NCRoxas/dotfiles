@@ -22,6 +22,8 @@ setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 setopt HIST_NO_STORE
 setopt HIST_SAVE_NO_DUPS
+autoload -Uz compinit
+compinit
 
 # Load plugins
 source <(antibody init)
@@ -30,6 +32,8 @@ antibody bundle < ~/.zsh_plugins.txt
 # Custom Bindings
 bindkey '^[[1;3D' backward-word
 bindkey '^[[1;3C' forward-word
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Aliases
 alias zshconfig="micro ~/.zshrc"
