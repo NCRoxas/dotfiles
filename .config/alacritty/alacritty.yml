@@ -30,6 +30,7 @@ window:
 
   decorations: none
   startup_mode: Windowed
+  dynamic_padding: true
   dynamic_title: true
   opacity: 0.9
 

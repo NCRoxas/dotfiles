@@ -12,7 +12,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Path to your oh-my-zsh installation.
 export PF_INFO="ascii title os de host kernel uptime pkgs shell memory wm palette"
 export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
-export VISUAL="/usr/bin/micro"
 export HISTFILE="$HOME/.zsh_history"
 export HISTIGNORE="*sudo -S*"
 export SAVEHIST=10000
@@ -40,6 +39,9 @@ alias zshconfig="micro ~/.zshrc"
 alias py="python3"
 alias pip="pip3"
 alias nano="micro"
+alias hh="npx hardhat"
+alias nn="pnpm"
+alias up="sudo dnf update -y && flatpak update -y && flatpak remove --unused -y"
 alias epoch='date +%s'
 alias reload="source ~/.zshrc"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
@@ -87,3 +89,6 @@ function diff {
     -l
   return ${pipestatus[1]}
 }
+
+export PNPM_HOME="/home/roxas/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
