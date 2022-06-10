@@ -11,7 +11,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Path to your oh-my-zsh installation.
 export PF_INFO="ascii title os de host kernel uptime pkgs shell memory wm palette"
-export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/.local/share/pnpm:$PATH"
 export HISTFILE="$HOME/.zsh_history"
 export HISTIGNORE="*sudo -S*"
 export SAVEHIST=10000
@@ -90,5 +90,8 @@ function diff {
   return ${pipestatus[1]}
 }
 
-export PNPM_HOME="/home/roxas/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+function palette {
+	for i in {0..255};do 
+		printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); 
+	then echo ; fi ; done
+}
