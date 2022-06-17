@@ -52,6 +52,7 @@ selection:
 ## Bindings
 key_bindings:
 - { key: Z, mods: Alt, action: Hide }
+- { key: Return, mods: Alt, action: ToggleFullscreen }
 
 mouse_bindings:
 - { mouse: Right, action: Paste }
