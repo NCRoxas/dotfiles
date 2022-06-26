@@ -44,6 +44,7 @@ alias nn="pnpm"
 alias up="topgrade -y -c"
 alias epoch='date +%s'
 alias reload="source ~/.zshrc"
+alias flush="sudo resolvectl flush-caches"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
 alias yt="yt-dlp --sponsorblock-remove default"
 alias ytx="yt-dlp -x --sponsorblock-remove intro,outro -o '%(uploader)s/%(playlist_index)s - %(title)s.%(ext)s'"
@@ -53,16 +54,24 @@ alias config="/usr/bin/git --git-dir=/home/roxas/.cfg/ --work-tree=/home/roxas"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 function op(){
-	echo "Uploading $1..." 
-	curl -F file=@"${1}" https://x0.at/
+	if [ $# -eq 0 ] && tty -s
+		then echo -e "Usage:  op /tmp/file2upload\n"
+	else
+	echo "Uploading $1..."
+		curl -# -w "\n" -T $1 https://temp.sh
+	fi
 }
 
 function ops(){
+	if [ $# -eq 0 ] && tty -s
+		then echo -e "Usage:  ops /tmp/file2upload\n"
+		exit 1
+	fi
 	PASS=$(openssl rand -base64 12)
 	echo "Password: $PASS"
 	zip -r -P "$PASS" "${1%.*}.zip" "$1"
 	echo "Uploading ${1%.*}.zip..."
-	curl -F file=@"${1%.*}.zip" https://x0.at/
+	curl -# -w "\n" -T "${1%.*}.zip" https://temp.sh
 	rm "${1%.*}.zip"
 }
 
