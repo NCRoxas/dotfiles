@@ -54,25 +54,17 @@ alias config="/usr/bin/git --git-dir=/home/roxas/.cfg/ --work-tree=/home/roxas"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 function op(){
-	if [ $# -eq 0 ] && tty -s
-		then echo -e "Usage:  op /tmp/file2upload\n"
-	else
 	echo "Uploading $1..."
-		curl -# -w "\n" -T $1 https://temp.sh
-	fi
+	curl -T $1 "https://oshi.at/?expire=1440&autodestroy=1"
 }
 
 function ops(){
-	if [ $# -eq 0 ] && tty -s
-		then echo -e "Usage:  ops /tmp/file2upload\n"
-		exit 1
-	fi
 	PASS=$(openssl rand -base64 12)
 	echo "Password: $PASS"
 	zip -r -P "$PASS" "${1%.*}.zip" "$1"
 	echo "Uploading ${1%.*}.zip..."
-	curl -# -w "\n" -T "${1%.*}.zip" https://temp.sh
-	rm "${1%.*}.zip"
+	curl -T "${1%.*}.zip" "https://oshi.at/?expire=1440&autodestroy=1"
+	rm -f "${1%.*}.zip"
 }
 
  # colorized alias list
