@@ -41,8 +41,11 @@ alias pip="pip3"
 alias nano="micro"
 alias hh="npx hardhat"
 alias nn="pnpm"
+alias nv="nvim"
 alias up="topgrade -y -c"
-alias epoch='date +%s'
+alias epoch="date +%s"
+alias dc="docker-compose"
+alias nvi="lspci -nnk | grep -iA2 vga"
 alias reload="source ~/.zshrc"
 alias flush="sudo resolvectl flush-caches"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
@@ -55,7 +58,7 @@ alias config="/usr/bin/git --git-dir=/home/roxas/.cfg/ --work-tree=/home/roxas"
 
 function op(){
 	echo "Uploading $1..."
-	curl -T $1 "https://oshi.at/?expire=1440&autodestroy=1"
+	curl -T $1 "https://oshi.at/?expire=1440&autodestroy=2&filename=$1"
 }
 
 function ops(){
@@ -63,7 +66,7 @@ function ops(){
 	echo "Password: $PASS"
 	zip -r -P "$PASS" "${1%.*}.zip" "$1"
 	echo "Uploading ${1%.*}.zip..."
-	curl -T "${1%.*}.zip" "https://oshi.at/?expire=1440&autodestroy=1"
+	curl -T "${1%.*}.zip" "https://oshi.at/?expire=1440&autodestroy=2&filename=${1%.*}.zip"
 	rm -f "${1%.*}.zip"
 }
 
