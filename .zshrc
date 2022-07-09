@@ -35,10 +35,9 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Aliases
-alias zshconfig="micro ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias py="python3"
 alias pip="pip3"
-alias nano="micro"
 alias hh="npx hardhat"
 alias nn="pnpm"
 alias nv="nvim"

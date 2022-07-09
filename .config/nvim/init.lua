@@ -1,0 +1,22 @@
+-- Main
+require "user.utils"
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.theme"
+
+-- Plugin Configs
+require "configs.alpha"
+require "configs.treesitter"
+require "configs.telescope"
+require "configs.feline"
+require "configs.toggleterm"
+require "configs.session-manager"
+require "configs.indent-line"
+require "configs.cinnamon"
+require "configs.colorizer"
+require "configs.which-key"
+require "configs.autopairs"
+require "configs.lsp"
+require "configs.cmp"
+require "configs.go"
