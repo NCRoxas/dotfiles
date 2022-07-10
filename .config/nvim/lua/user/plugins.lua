@@ -25,14 +25,15 @@ return require('packer').startup(function(use)
   use "numToStr/Comment.nvim" -- Smart commenting
   use "akinsho/nvim-toggleterm.lua" -- Floating terminal
   use "Shatur/neovim-session-manager" -- Session Manager
+  use "junegunn/fzf" -- Fuzzy search
 
   -- Design
+  use({ "catppuccin/nvim", as = "catppuccin" }) -- Theme
   use "kyazdani42/nvim-web-devicons" -- Icons
   use "feline-nvim/feline.nvim" -- Statusline
   use "lewis6991/gitsigns.nvim" -- Git decorations
   use "norcalli/nvim-colorizer.lua" -- Colorize rgb codes
   use "goolord/alpha-nvim" -- Dashboard
-  use({ "catppuccin/nvim", as = "catppuccin" }) -- Theme
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" -- File search

@@ -13,7 +13,7 @@ if status_ok then
 
   local extra_sections = {
     g = "Git",
-    s = "Search",
+    -- s = "Search",
     S = "Session",
     t = "Terminal",
   }
@@ -67,3 +67,4 @@ if status_ok then
     end
   end
 end
+

@@ -15,6 +15,7 @@ local opts = { noremap = true, silent = true }
 map("", "<Space>", "<Nop>")
 
 -- Standard Operations
+map("n", "<leader><leader>", ":source $MYVIMRC<cr>", { desc = "Reload config" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
@@ -24,13 +25,13 @@ map("n", "Q", "<Nop>")
 -- Normal --
 -- Navigate buffers
 if is_available "bufferline" then
-  map("n", "<A->>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer tab" })
-  map("n", "<A-<>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer tab" })
+  map("n", "<A-.>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer tab" })
+  map("n", "<A-,>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer tab" })
   map("n", ">b", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
   map("n", "<b", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
 else
-  map("n", "<A->>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "<A-<>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+  map("n", "<A-.>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  map("n", "<A-,>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 end
 
 -- Buffer delete
@@ -50,6 +51,22 @@ end
 if is_available "trouble" then
   map("n", "<leader>x", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
 end
+
+-- Search
+if is_available "fzf" then
+  map("n", "<leader>sf", ":Rg<CR>", { desc = "Search in files" })
+  map("n", "<leader>sa", ":Files<CR>", { desc = "Search files" })
+end
+
+-- Aerial
+if is_available "aerial" then
+  map("n", '<leader>z', '<cmd>AerialToggle!<CR>', { desc = "Toggle Outline" })
+  map("n", '{', '<cmd>AerialPrev<CR>', { desc = "Previous Function" })
+  map("n", '}', '<cmd>AerialNext<CR>', { desc = "Next Function" })
+  map("n", '[[', '<cmd>AerialPrevUp<CR>', { desc = "Jump down tree" })
+  map("n", ']]', '<cmd>AerialNextUp<CR>', { desc = "Jump up tree" })
+end
+
 
 -- Smart Splits
 if is_available "smart-splits" then
@@ -160,45 +177,25 @@ if is_available "telescope" then
   map("n", "<leader>fh", function()
     require("telescope.builtin").help_tags()
   end, { desc = "Search help" })
-  map("n", "<leader>fm", function()
+  map("n", "<leader>fk", function()
     require("telescope.builtin").marks()
   end, { desc = "Search marks" })
   map("n", "<leader>fo", function()
     require("telescope.builtin").oldfiles()
   end, { desc = "Search history" })
-  map("n", "<leader>sb", function()
-    require("telescope.builtin").git_branches()
-  end, { desc = "Git branchs" })
-  map("n", "<leader>sh", function()
-    require("telescope.builtin").help_tags()
-  end, { desc = "Search help" })
-  map("n", "<leader>sm", function()
+  map("n", "<leader>fm", function()
     require("telescope.builtin").man_pages()
   end, { desc = "Search man" })
-  map("n", "<leader>sn", function()
-    require("telescope").extensions.notify.notify()
-  end, { desc = "Search notifications" })
-  map("n", "<leader>sr", function()
-    require("telescope.builtin").registers()
-  end, { desc = "Search registers" })
-  map("n", "<leader>sk", function()
+  map("n", "<leader>fy", function()
     require("telescope.builtin").keymaps()
   end, { desc = "Search keymaps" })
-  map("n", "<leader>sc", function()
+  map("n", "<leader>fc", function()
     require("telescope.builtin").commands()
   end, { desc = "Search commands" })
-  map("n", "<leader>ls", function()
-    local aerial_avail, _ = pcall(require, "aerial")
-    if aerial_avail then
-      require("telescope").extensions.aerial.aerial()
-    else
-      require("telescope.builtin").lsp_document_symbols()
-    end
-  end, { desc = "Search symbols" })
-  map("n", "<leader>lR", function()
+  map("n", "<leader>fr", function()
     require("telescope.builtin").lsp_references()
   end, { desc = "Search references" })
-  map("n", "<leader>lD", function()
+  map("n", "<leader>fd", function()
     require("telescope.builtin").diagnostics()
   end, { desc = "Search diagnostics" })
 end
@@ -258,6 +255,12 @@ map('n', '<A-Right>', ":MoveHChar(1)<CR>", opts)
 map('n', '<A-Left>', ":MoveHChar(-1)<CR>", opts)
 map('v', '<A-Right>', ":MoveHBlock(1)<CR>", opts)
 map('v', '<A-Left>', ":MoveHBlock(-1)<CR>", opts)
+
+-- Extras
+map('i', '<C-d>', "<Del>", opts) -- forward delete
+map('i', '<C-H>', "<C-w>", opts) -- delete word
+map('i', '<C-x>', "<Esc>ddi", opts) -- delete line
+map('n', '<C-o>', "o<Esc>k", opts) -- newline
 
 -- Insert --
 map('i', 'jj', '<esc>', opts)
