@@ -14,6 +14,13 @@ local opts = { noremap = true, silent = true }
 --Remap space as leader key
 map("", "<Space>", "<Nop>")
 
+-- Standard Operations
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
+map("n", "<C-q>", "<cmd>q!<cr>", { desc = "Force quit" })
+map("n", "Q", "<Nop>")
+
 -- Normal --
 -- Navigate buffers
 if is_available "bufferline" then
@@ -34,14 +41,15 @@ else
   map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 end
 
--- Standard Operations
-map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
-map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
-map("n", "<C-q>", "<cmd>q!<cr>", { desc = "Force quit" })
-map("n", "Q", "<Nop>")
+-- Chadtree
+if is_available "chadtree" then
+  map("n", "<leader>e", "<cmd>CHADopen<cr>", { desc = "Open Chadtree" })
+end
 
-map("n", "<leader>e", "<cmd>CHADopen<cr>", { desc = "Open Chadtree" })
+-- Trouble
+if is_available "trouble" then
+  map("n", "<leader>x", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
+end
 
 -- Smart Splits
 if is_available "smart-splits" then
@@ -199,6 +207,7 @@ end
 if is_available "nvim-lsp-installer" then
   map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
   map("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
+  map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Refactor" })
 end
 
 -- Terminal

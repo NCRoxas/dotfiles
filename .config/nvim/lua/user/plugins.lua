@@ -72,6 +72,12 @@ return require('packer').startup(function(use)
   use "ms-jpq/chadtree" -- Chadtree
   use "crispgm/nvim-go" -- Go stuff
   use "fedepujol/move.nvim" -- Move lines
+  use { -- Diagnostics List
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
