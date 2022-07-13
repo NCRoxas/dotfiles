@@ -52,11 +52,9 @@ if is_available "trouble" then
   map("n", "<leader>x", "<cmd>TroubleToggle<cr>", { desc = "Toggle Trouble" })
 end
 
--- Search
-if is_available "fzf" then
-  map("n", "<leader>sf", ":Rg<CR>", { desc = "Search in files" })
-  map("n", "<leader>sa", ":Files<CR>", { desc = "Search files" })
-end
+-- Search and replace
+map("n", "<leader>rr", ":%s///g<Left><Left>", { desc = "Replace all in current buffer" })
+map("n", "<leader>rw", "cgn", { desc = "Replace current word" }) -- Repeat with . jump with n
 
 -- Aerial
 if is_available "aerial" then
@@ -67,11 +65,31 @@ if is_available "aerial" then
   map("n", ']]', '<cmd>AerialNextUp<CR>', { desc = "Jump up tree" })
 end
 
+if is_available "textcase" then
+  map("n", "<leader>uu", function()
+    require("textcase").current_word("to_upper_case")
+  end, { desc = "Upper case" })
+  map("n", "<leader>ul", function()
+    require("textcase").current_word("to_lower_case")
+  end, { desc = "Lower case" })
+  map("n", "<leader>us", function()
+    require("textcase").current_word("to_snake_case")
+  end, { desc = "Snake case" })
+  map("n", "<leader>up", function()
+    require("textcase").current_word("to_pascal_case")
+  end, { desc = "Pascal case" })
+  map("n", "<leader>uc", function()
+    require("textcase").current_word("to_camel_case")
+  end, { desc = "Camel case" })
+  map("n", "<leader>uo", function()
+    require("textcase").current_word("to_constant_case")
+  end, { desc = "Constant case" })
+end
 
 -- Smart Splits
 if is_available "smart-splits" then
   -- Better window navigation
-  map("n", "<leader>.", "<C-w>v", { desc = "Create vertical split" })
+  map("n", "<leader>v", "<C-w>v", { desc = "Create vertical split" })
   map("n", "<A-h>", function()
     require("smart-splits").move_cursor_left()
   end, { desc = "Move to left split" })
@@ -198,20 +216,21 @@ if is_available "telescope" then
   map("n", "<leader>fd", function()
     require("telescope.builtin").diagnostics()
   end, { desc = "Search diagnostics" })
+  map("n", "<leader>ft", "<cmd>TextCaseOpenTelescope<cr>", { desc = "Text case Info" })
 end
 
 -- LSP Installer
 if is_available "nvim-lsp-installer" then
   map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
   map("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
-  map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Refactor" })
+  map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Refactor" })
 end
 
 -- Terminal
 if is_available "toggleterm" then
   local toggle_term_cmd = utils.toggle_term_cmd
   map("n", "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
-  map("n", "<leader>gg", function()
+  map("n", "<leader>tg", function()
     toggle_term_cmd "lazygit"
   end, { desc = "ToggleTerm lazygit" })
   map("n", "<leader>tn", function()
@@ -263,7 +282,7 @@ map('i', '<C-x>', "<Esc>ddi", opts) -- delete line
 map('n', '<C-o>', "o<Esc>k", opts) -- newline
 
 -- Insert --
-map('i', 'jj', '<esc>', opts)
+map("i", "jj", "<esc>", opts)
 
 -- Visual --
 map("v", "p", '"_dP', opts)

@@ -11,7 +11,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Path to your oh-my-zsh installation.
 export PF_INFO="ascii title os de host kernel uptime pkgs shell memory wm palette"
-export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/.local/share/pnpm:$PATH"
+export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/.local/share/pnpm:$HOME/go/bin:$PATH"
 export HISTFILE="$HOME/.zsh_history"
 export HISTIGNORE="*sudo -S*"
 export SAVEHIST=10000

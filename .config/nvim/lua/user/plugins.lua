@@ -25,7 +25,6 @@ return require('packer').startup(function(use)
   use "numToStr/Comment.nvim" -- Smart commenting
   use "akinsho/nvim-toggleterm.lua" -- Floating terminal
   use "Shatur/neovim-session-manager" -- Session Manager
-  use "junegunn/fzf" -- Fuzzy search
 
   -- Design
   use({ "catppuccin/nvim", as = "catppuccin" }) -- Theme
@@ -34,6 +33,7 @@ return require('packer').startup(function(use)
   use "lewis6991/gitsigns.nvim" -- Git decorations
   use "norcalli/nvim-colorizer.lua" -- Colorize rgb codes
   use "goolord/alpha-nvim" -- Dashboard
+  use "xiyaowong/nvim-transparent" -- Add transparency
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" -- File search
@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
   use "williamboman/nvim-lsp-installer" -- Manage LSP
   use "neovim/nvim-lspconfig" -- LSP config
   use "lukas-reineke/lsp-format.nvim" -- LSP formatter
+  use "johmsalas/text-case.nvim" -- Change text casing
 
   -- Completion
   use "L3MON4D3/LuaSnip" -- Snippet engine
@@ -62,6 +63,7 @@ return require('packer').startup(function(use)
   use "hrsh7th/cmp-buffer" -- Buffer completion
   use "hrsh7th/cmp-path" -- Path completion
   use "hrsh7th/cmp-cmdline" -- Cmd completion
+  use "hrsh7th/cmp-nvim-lsp-signature-help" -- Display function signatures
   use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
   use "rafamadriz/friendly-snippets" -- Vscode friendly snippets
 
@@ -73,12 +75,8 @@ return require('packer').startup(function(use)
   use "ms-jpq/chadtree" -- Chadtree
   use "crispgm/nvim-go" -- Go stuff
   use "fedepujol/move.nvim" -- Move lines
-  use { -- Diagnostics List
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup {}
-    end
-  }
+  use "haya14busa/is.vim" -- Auto clear highlight 
+  use "folke/trouble.nvim" -- Diagnostics
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then

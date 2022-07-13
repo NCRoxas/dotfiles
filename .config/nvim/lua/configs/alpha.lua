@@ -1,9 +1,8 @@
-local present, alpha = pcall(require, "alpha")
-if not present then
+local status_ok, alpha = pcall(require, "alpha")
+if not status_ok then
   return
 end
 
-local alpha_button = utils.alpha_button
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
   "                                                     ",
@@ -18,7 +17,6 @@ dashboard.section.header.val = {
 
 -- Set menu
 dashboard.section.buttons.val = {
-  dashboard.button("SPC f n", "  New file"),
   dashboard.button("SPC f f", "  Find file"),
   dashboard.button("SPC f o", "  Recents"),
   dashboard.button("SPC f m", "  Bookmarks"),
@@ -33,4 +31,3 @@ alpha.setup(dashboard.opts)
 vim.cmd([[
     autocmd FileType alpha setlocal nofoldenable
 ]])
-

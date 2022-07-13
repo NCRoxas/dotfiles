@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -154,11 +159,6 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  fzf = {
-    loaded = true,
-    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/fzf",
-    url = "https://github.com/junegunn/fzf"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -173,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/indent-o-matic",
     url = "https://github.com/Darazaki/indent-o-matic"
+  },
+  ["is.vim"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/is.vim",
+    url = "https://github.com/haya14busa/is.vim"
   },
   ["lsp-format.nvim"] = {
     loaded = true,
@@ -229,6 +234,11 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua",
     url = "https://github.com/akinsho/nvim-toggleterm.lua"
   },
+  ["nvim-transparent"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/nvim-transparent",
+    url = "https://github.com/xiyaowong/nvim-transparent"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -279,8 +289,12 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["text-case.nvim"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/text-case.nvim",
+    url = "https://github.com/johmsalas/text-case.nvim"
+  },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0" },
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
@@ -293,10 +307,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

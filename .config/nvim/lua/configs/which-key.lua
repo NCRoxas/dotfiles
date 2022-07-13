@@ -13,7 +13,8 @@ if status_ok then
 
   local extra_sections = {
     g = "Git",
-    -- s = "Search",
+    r = "Search",
+    u = "Change case",
     S = "Session",
     t = "Terminal",
   }
@@ -39,20 +40,25 @@ if status_ok then
     init_table("n", "<leader>", "S")
   end
 
+  if is_available "textcase" then
+    init_table("n", "<leader>", "u")
+  end
+
+
   if is_available "gitsigns" then
     init_table("n", "<leader>", "g")
   end
 
   if is_available "toggleterm" then
-    init_table("n", "<leader>", "g")
     init_table("n", "<leader>", "t")
   end
 
   if is_available "telescope" then
     init_table("n", "<leader>", "f")
-    init_table("n", "<leader>", "s")
     init_table("n", "<leader>", "g")
   end
+
+  init_table("n", "<leader>", "r")
 
   for mode, prefixes in pairs(mappings) do
     for prefix, mapping_table in pairs(prefixes) do
@@ -67,4 +73,3 @@ if status_ok then
     end
   end
 end
-
