@@ -65,6 +65,14 @@ if is_available "aerial" then
   map("n", ']]', '<cmd>AerialNextUp<CR>', { desc = "Jump up tree" })
 end
 
+-- Typescript
+if is_available "nvim-lsp-ts-utils" then
+  map("n", '<leader>it', ":TSLspOrganize<CR>", { desc = "TS Organize imports" })
+  map("n", '<leader>ir', ":TSLspRenameFile<CR>", { desc = "TS Rename File" })
+  map("n", '<leader>ia', ":TSLspImportAll<CR>", { desc = "TS Import all" })
+end
+
+-- Text case
 if is_available "textcase" then
   map("n", "<leader>uu", function()
     require("textcase").current_word("to_upper_case")

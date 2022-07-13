@@ -28,11 +28,11 @@ return require('packer').startup(function(use)
 
   -- Design
   use({ "catppuccin/nvim", as = "catppuccin" }) -- Theme
+  use "goolord/alpha-nvim" -- Dashboard
   use "kyazdani42/nvim-web-devicons" -- Icons
   use "feline-nvim/feline.nvim" -- Statusline
   use "lewis6991/gitsigns.nvim" -- Git decorations
   use "norcalli/nvim-colorizer.lua" -- Colorize rgb codes
-  use "goolord/alpha-nvim" -- Dashboard
   use "xiyaowong/nvim-transparent" -- Add transparency
 
   -- Telescope
@@ -66,6 +66,7 @@ return require('packer').startup(function(use)
   use "hrsh7th/cmp-nvim-lsp-signature-help" -- Display function signatures
   use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
   use "rafamadriz/friendly-snippets" -- Vscode friendly snippets
+  use "crispgm/nvim-go" -- Go stuff
 
   -- Extras
   use "declancm/cinnamon.nvim" -- Smooth scrolling
@@ -73,7 +74,6 @@ return require('packer').startup(function(use)
   use "folke/which-key.nvim" -- Key popup
   use "stevearc/aerial.nvim" -- Code outline
   use "ms-jpq/chadtree" -- Chadtree
-  use "crispgm/nvim-go" -- Go stuff
   use "fedepujol/move.nvim" -- Move lines
   use "haya14busa/is.vim" -- Auto clear highlight 
   use "folke/trouble.nvim" -- Diagnostics

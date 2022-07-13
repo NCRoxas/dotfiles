@@ -1,21 +1,23 @@
-local inst_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-local conf_status_ok, lsp_config = pcall(require, "lspconfig")
-local form_status_ok, lsp_format = pcall(require, "lsp-format")
-local cmp_status_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-local aeri_status_ok, aerial = pcall(require, "aerial")
-if not (inst_status_ok and conf_status_ok and form_status_ok and cmp_status_ok and aeri_status_ok) then
+local lspI_S, lsp_installer = pcall(require, "nvim-lsp-installer")
+local lspC_S, lsp_config = pcall(require, "lspconfig")
+local lspF_S, lsp_format = pcall(require, "lsp-format")
+local cmp_S, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+local aer_S, aerial = pcall(require, "aerial")
+if not (lspI_S and lspC_S and lspF_S and cmp_S and aer_S) then
   return
 end
 
-local servers = { "clangd", "cssls", "dockerls", "eslint", "emmet_ls", "gopls", "html", "jsonls", "tsserver",
-  "sumneko_lua", "pylsp", "solc", "volar", "yamlls" }
+local servers = { "clangd", "cssls", "dockerls", "emmet_ls", "gopls", "html", "jsonls", "tsserver",
+  "sumneko_lua", "pyright", "solc", "volar", "yamlls" }
 
 lsp_installer.setup({
   ensure_installed = servers,
   automatic_installation = true
 })
-
-lsp_format.setup {}
+lsp_format.setup {
+  typescript = { tab_width = 4 },
+  yaml = { tab_width = 2 },
+}
 aerial.setup {}
 
 local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
