@@ -9,6 +9,11 @@ fi
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 
+# pnpm
+export PNPM_HOME="/home/roxas/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
 # Path to your oh-my-zsh installation.
 export PF_INFO="ascii title os de host kernel uptime pkgs shell memory wm palette"
 export PATH="$HOME/.poetry/bin:$HOME/.local/bin:/usr/local/go/bin:$HOME/.local/share/pnpm:$HOME/go/bin:$PATH"
@@ -99,7 +104,3 @@ function palette {
 	then echo ; fi ; done
 }
 
-# pnpm
-export PNPM_HOME="/home/roxas/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
