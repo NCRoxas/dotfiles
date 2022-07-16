@@ -179,11 +179,6 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/is.vim",
     url = "https://github.com/haya14busa/is.vim"
   },
-  ["lsp-format.nvim"] = {
-    loaded = true,
-    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
-    url = "https://github.com/lukas-reineke/lsp-format.nvim"
-  },
   ["move.nvim"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/move.nvim",
@@ -193,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
     url = "https://github.com/Shatur/neovim-session-manager"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,

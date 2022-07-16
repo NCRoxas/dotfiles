@@ -53,8 +53,8 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs" -- Autoclose Brackets
   use "williamboman/nvim-lsp-installer" -- Manage LSP
   use "neovim/nvim-lspconfig" -- LSP config
-  use "lukas-reineke/lsp-format.nvim" -- LSP formatter
   use "johmsalas/text-case.nvim" -- Change text casing
+  use "jose-elias-alvarez/null-ls.nvim" -- Lsp hooks
 
   -- Completion
   use "L3MON4D3/LuaSnip" -- Snippet engine
