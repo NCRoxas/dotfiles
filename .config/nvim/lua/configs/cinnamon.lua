@@ -1,9 +1,10 @@
 local status_ok, cinnamon = pcall(require, "cinnamon")
 if not status_ok then
-  return
+    return
 end
 
 cinnamon.setup {
-  extra_keymaps = true,
-  extended_keymaps = true,
+    extra_keymaps = true,
+    extended_keymaps = true,
 }
+

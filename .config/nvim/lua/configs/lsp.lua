@@ -3,48 +3,39 @@ local lspC_S, lsp_config = pcall(require, "lspconfig")
 local cmp_S, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 local aer_S, aerial = pcall(require, "aerial")
 if not (lspI_S and lspC_S and cmp_S and aer_S) then
-  return
+    return
 end
 
-local servers = { "clangd", "cssls", "dockerls", "emmet_ls", "gopls", "html", "jsonls", "tsserver",
-  "sumneko_lua", "pyright", "solc", "volar", "yamlls" }
+local servers = {
+    "clangd",
+    "cssls",
+    "dockerls",
+    "emmet_ls",
+    "gopls",
+    "html",
+    "jsonls",
+    "tsserver",
+    "sumneko_lua",
+    "pyright",
+    "solc",
+    "volar",
+    "yamlls",
+}
 
 lsp_installer.setup({
-  ensure_installed = servers,
-  automatic_installation = true
+    ensure_installed = servers,
+    automatic_installation = true,
 })
-aerial.setup {}
+aerial.setup({})
 
 local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local lsp_formatting = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      return client.name == "null-ls"
-    end,
-    bufnr = bufnr,
-  })
-end
-
 local on_attach = function(client, bufnr)
-  -- client.server_capabilities.documentFormattingProvider = false
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        lsp_formatting(bufnr)
-      end,
-    })
-  end
-  aerial.on_attach(client, bufnr)
+    aerial.on_attach(client, bufnr)
 end
 
 for _, server in ipairs(servers) do
-  lsp_config[server].setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
+    lsp_config[server].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+    })
 end

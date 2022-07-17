@@ -149,11 +149,6 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["feline.nvim"] = {
-    loaded = true,
-    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/feline.nvim",
-    url = "https://github.com/feline-nvim/feline.nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -169,25 +164,20 @@ _G.packer_plugins = {
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
-  ["indent-o-matic"] = {
-    loaded = true,
-    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/indent-o-matic",
-    url = "https://github.com/Darazaki/indent-o-matic"
-  },
   ["is.vim"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/is.vim",
     url = "https://github.com/haya14busa/is.vim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["move.nvim"] = {
     loaded = true,
     path = "/home/roxas/.local/share/nvim/site/pack/packer/start/move.nvim",
     url = "https://github.com/fedepujol/move.nvim"
-  },
-  ["neovim-session-manager"] = {
-    loaded = true,
-    path = "/home/roxas/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
-    url = "https://github.com/Shatur/neovim-session-manager"
   },
   ["null-ls.nvim"] = {
     loaded = true,
