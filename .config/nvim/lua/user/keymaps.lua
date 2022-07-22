@@ -15,7 +15,7 @@ local opts = { noremap = true, silent = true }
 map("", "<Space>", "<Nop>")
 
 -- Standard Operations
-map("n", "<leader><leader>", ":source $MYVIMRC<cr>", { desc = "Reload config" })
+-- map("n", "<leader><leader>", ":source $MYVIMRC<cr>", { desc = "Reload config" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
@@ -58,20 +58,28 @@ map("n", "<leader>rw", "cgn", { desc = "Replace current word" }) -- Repeat with 
 
 -- Aerial
 if is_available "aerial" then
-    map("n", '<leader>z', '<cmd>AerialToggle!<CR>', { desc = "Toggle Outline" })
-    map("n", '{', '<cmd>AerialPrev<CR>', { desc = "Previous Function" })
-    map("n", '}', '<cmd>AerialNext<CR>', { desc = "Next Function" })
-    map("n", '[[', '<cmd>AerialPrevUp<CR>', { desc = "Jump down tree" })
-    map("n", ']]', '<cmd>AerialNextUp<CR>', { desc = "Jump up tree" })
+    map("n", "<leader>z", "<cmd>AerialToggle!<CR>", { desc = "Toggle Outline" })
+    map("n", "{", "<cmd>AerialPrev<CR>", { desc = "Previous Function" })
+    map("n", "}", "<cmd>AerialNext<CR>", { desc = "Next Function" })
+    map("n", "[[", "<cmd>AerialPrevUp<CR>", { desc = "Jump down tree" })
+    map("n", "]]", "<cmd>AerialNextUp<CR>", { desc = "Jump up tree" })
 end
 
 -- Typescript
-if is_available "nvim-lsp-ts-utils" then
-    map("n", '<leader>it', ":TSLspOrganize<CR>", { desc = "TS Organize imports" })
-    map("n", '<leader>ir', ":TSLspRenameFile<CR>", { desc = "TS Rename File" })
-    map("n", '<leader>ia', ":TSLspImportAll<CR>", { desc = "TS Import all" })
+if is_available "typescript" then
+    map("n", "<leader>lto", ":TypescriptOrganizeImports<CR>", { desc = "TS Organize imports" })
+    map("n", "<leader>ltr", ":TypescriptRemoveUnused<CR>", { desc = "TS Remove unused imports" })
+    map("n", "<leader>lta", ":TypescriptAddMissingImports<CR>", { desc = "TS Import missing" })
+    map("n", "<leader>ltf", ":TypescriptFixAll<CR>", { desc = "TS Fix all" })
+    map("n", "<leader>ltn", ":TypescriptRenameFile<CR>", { desc = "TS Rename file" })
 end
 
+if is_available "go" then
+    map("n", "<leader>lgb", ":GoBuild<CR>", { desc = "Go Build" })
+    map("n", "<leader>lgu", ":GoUpdateBinaries<CR>", { desc = "Go Update binaries" })
+    map("n", "<leader>lgi", ":GoInstallBinaries<CR>", { desc = "Go Install binaries" })
+    map("n", "<leader>lgf", ":GoFillStruct<CR>", { desc = "Go Auto fill struct" })
+end
 -- Text case
 if is_available "textcase" then
     map("n", "<leader>uu", function()
@@ -229,9 +237,14 @@ end
 
 -- LSP Installer
 if is_available "nvim-lsp-installer" then
+    map("n", "<leader>ll", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
     map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
-    map("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
     map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Refactor" })
+    map("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "Declaration" })
+    map("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Definition" })
+    map("n", "<leader>le", vim.lsp.buf.references, { desc = "References" })
+    map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+    map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 end
 
 -- Terminal
@@ -274,20 +287,20 @@ map("n", "<leader>pS", "<cmd>PackerStatus<cr>", { desc = "Packer Status" })
 map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
 
 -- Move text up and down
-map('n', '<A-Down>', ":MoveLine(1)<CR>", opts)
-map('n', '<A-Up>', ":MoveLine(-1)<CR>", opts)
-map('v', '<A-Down>', ":MoveBlock(1)<CR>", opts)
-map('v', '<A-Up>', ":MoveBlock(-1)<CR>", opts)
-map('n', '<A-Right>', ":MoveHChar(1)<CR>", opts)
-map('n', '<A-Left>', ":MoveHChar(-1)<CR>", opts)
-map('v', '<A-Right>', ":MoveHBlock(1)<CR>", opts)
-map('v', '<A-Left>', ":MoveHBlock(-1)<CR>", opts)
+map("n", "<A-Down>", ":MoveLine(1)<CR>", opts)
+map("n", "<A-Up>", ":MoveLine(-1)<CR>", opts)
+map("v", "<A-Down>", ":MoveBlock(1)<CR>", opts)
+map("v", "<A-Up>", ":MoveBlock(-1)<CR>", opts)
+map("n", "<A-Right>", ":MoveHChar(1)<CR>", opts)
+map("n", "<A-Left>", ":MoveHChar(-1)<CR>", opts)
+map("v", "<A-Right>", ":MoveHBlock(1)<CR>", opts)
+map("v", "<A-Left>", ":MoveHBlock(-1)<CR>", opts)
 
 -- Extras
-map('i', '<C-d>', "<Del>", opts) -- forward delete
-map('i', '<C-H>', "<C-w>", opts) -- delete word
-map('i', '<C-x>', "<Esc>ddi", opts) -- delete line
-map('n', '<C-o>', "o<Esc>k", opts) -- newline
+map("i", "<C-d>", "<Del>", opts) -- forward delete
+map("i", "<C-H>", "<C-w>", opts) -- delete word
+map("i", "<C-x>", "<Esc>ddi", opts) -- delete line
+map("n", "<C-o>", "o<Esc>k", opts) -- newline
 
 -- Insert --
 map("i", "jj", "<esc>", opts)

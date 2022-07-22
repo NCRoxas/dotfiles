@@ -21,6 +21,9 @@ require "configs.autopairs"
 require "configs.textcase"
 require "configs.trouble"
 require "configs.null-ls"
-require "configs.lsp"
 require "configs.cmp"
-require "configs.go"
+
+-- LSP Configs
+require "configs.lsp.settings"
+require "configs.lsp.typescript"
+require "configs.lsp.go"

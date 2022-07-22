@@ -52,6 +52,7 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" -- LSP config
     use "johmsalas/text-case.nvim" -- Change text casing
     use "jose-elias-alvarez/null-ls.nvim" -- Lsp hooks
+    use "jose-elias-alvarez/typescript.nvim" -- Typescript features
 
     -- Completion
     use "L3MON4D3/LuaSnip" -- Snippet engine

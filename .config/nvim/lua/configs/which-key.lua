@@ -7,6 +7,8 @@ if status_ok then
                 f = { name = "File" },
                 p = { name = "Packer" },
                 l = { name = "LSP" },
+                lt = { name = "Typescript" },
+                lg = { name = "Go" },
             },
         },
     }
@@ -38,7 +40,6 @@ if status_ok then
     if is_available "textcase" then
         init_table("n", "<leader>", "u")
     end
-
 
     if is_available "gitsigns" then
         init_table("n", "<leader>", "g")

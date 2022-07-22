@@ -51,6 +51,8 @@ alias epoch="date +%s"
 alias dc="docker-compose"
 alias nvi="lspci -nnk | grep -iA2 vga"
 alias reload="source ~/.zshrc"
+alias gpge="gpg -o sentinel.gpg --export-options backup --export-secret-keys test.metathesis@aleeas.com"
+alias gpgi="gpg --import-options restore --import sentinel.gpg"
 alias flush="sudo resolvectl flush-caches"
 alias vblk="lsblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL"
 alias yt="yt-dlp --sponsorblock-remove default"
@@ -74,6 +76,18 @@ function ops(){
 	rm -f "${1%.*}.zip"
 }
 
+function lock(){
+    tar czf "${1%.*}.tar.gz" "$1"
+    ME=$(echo 'ZDM0ZHNjZW5lCg==' | base64 -d)
+    gpg -e -r $ME "${1%.*}.tar.gz"
+    rm -f "${1%.*}.tar.gz" 
+}
+
+function unlock(){
+    gpg -d -o "${1%.*}.tar.gz" "$1"
+    tar xvf "${1%.*}.tar.gz"
+    rm -f "${1%.*}.tar.gz" 
+}
  # colorized alias list
 function als {
   alias | sort \
